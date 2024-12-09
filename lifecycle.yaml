@@ -9,7 +9,7 @@ environment:
 services:
   - name: "backend-svc"
     helm:
-      repository: "vigneshrajsb/lc-test"
+      repository: "vigneshrajsb/backend-svc"
       branchName: "main"
       grpc: true
       chart:
@@ -29,7 +29,7 @@ services:
 
   - name: "backend-cache"
     helm:
-      repository: "vigneshrajsb/lc-test"
+      repository: "vigneshrajsb/backend-svc"
       branchName: "main"
       chart:
         name: "redis"
