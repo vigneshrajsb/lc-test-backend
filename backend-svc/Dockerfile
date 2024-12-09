@@ -3,11 +3,11 @@ FROM golang:1.17 AS builder
 
 WORKDIR /app
 
-COPY grpc-echo/go.mod grpc-echo/go.sum ./
+COPY backend-svc/go.mod backend-svc/go.sum ./
 
 RUN go mod download
 
-COPY grpc-echo/ ./
+COPY backend-svc/ ./
 
 RUN CGO_ENABLED=0 GOOS=linux go build -o grpc-server ./server.go
 
