@@ -5,8 +5,14 @@ environment:
   defaultServices:
     - name: 'backend-cache'
     - name: 'backend-svc'
+    - name: 'config-svc'
     
 services:
+  - name: "config-svc"
+    configuration:
+      defaultTag: descope
+      branchName: config
+    
   - name: "backend-svc"
     helm:
       repository: "vigneshrajsb/backend-svc"
