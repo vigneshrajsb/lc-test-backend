@@ -32,7 +32,7 @@ services:
           env:
             COMPONENT: "app"
             ENV: "lifecycle"
-            PROJECT: {{{PROJECT_ID}}}
+            PROJECT: "{{{PROJECT_ID}}}"
 
   - name: "backend-cache"
     helm:
