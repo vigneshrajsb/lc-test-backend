@@ -6,11 +6,9 @@ environment:
     - name: 'backend-cache'
     - name: 'backend-svc'
     - name: 'config-svc'
-    
-services:
-  - name: "config-svc"
-    serviceId: 254
-    
+      serviceId: 254
+
+services:    
   - name: "backend-svc"
     helm:
       repository: "vigneshrajsb/backend-svc"
