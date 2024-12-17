@@ -9,9 +9,7 @@ environment:
     
 services:
   - name: "config-svc"
-    configuration:
-      defaultTag: descope
-      branchName: descope
+    serviceId: 254
     
   - name: "backend-svc"
     helm:
