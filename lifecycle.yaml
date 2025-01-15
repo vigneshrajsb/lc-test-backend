@@ -4,8 +4,9 @@ version: '1.0.0'
 environment:
   autoDeploy: true
   defaultServices:
-    - name: 'backend-cache'
     - name: 'backend-svc'
+  optionalServices:
+    - name: 'backend-optional-svc'
   webhooks:
     - state: 'deployed'
       type: 'codefresh'
@@ -19,6 +20,30 @@ environment:
     
 services:
   - name: "backend-svc"
+    requires:
+      - name: backend-cache
+    helm:
+      repository: "vigneshrajsb/backend-svc"
+      branchName: "main"
+      grpc: true
+      chart:
+        name: 'goodrx-app'
+        valueFiles:
+          - 'sysops/helm/common.yaml'
+          - 'sysops/helm/lfc/service/grpc-service.yaml'
+      docker:
+        defaultTag: "main"
+        app:
+          dockerfilePath: "backend-svc/Dockerfile"
+          ports:
+            - 8080
+          env:
+            COMPONENT: "app"
+            ENV: "lifecycle"
+
+  - name: "backend-optional-svc"
+    requires:
+      - name: backend-cache
     helm:
       repository: "vigneshrajsb/backend-svc"
       branchName: "main"
